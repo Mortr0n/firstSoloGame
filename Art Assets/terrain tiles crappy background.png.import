@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/simple_pixel_grass_background.png-dd2fef157f9607c99591f0fdf4853df6.stex"
+path="res://.import/terrain tiles crappy background.png-176df64891a9a91a3d3a6e5ad9c9fb3d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://simple_pixel_grass_background.png"
-dest_files=[ "res://.import/simple_pixel_grass_background.png-dd2fef157f9607c99591f0fdf4853df6.stex" ]
+source_file="res://Art Assets/terrain tiles crappy background.png"
+dest_files=[ "res://.import/terrain tiles crappy background.png-176df64891a9a91a3d3a6e5ad9c9fb3d.stex" ]
 
 [params]
 

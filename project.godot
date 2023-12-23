@@ -8,38 +8,18 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Area2D",
-"class": "Anchor2D",
-"language": "GDScript",
-"path": "res://Anchor2D.gd"
-}, {
-"base": "Camera2D",
-"class": "AnchorCamera2D",
-"language": "GDScript",
-"path": "res://AnchorCamera2D.gd"
-}, {
-"base": "Area2D",
-"class": "AnchorDetector2D",
-"language": "GDScript",
-"path": "res://AnchorDetector2D.gd"
-} ]
-_global_script_class_icons={
-"Anchor2D": "",
-"AnchorCamera2D": "",
-"AnchorDetector2D": ""
-}
-
 [application]
 
 config/name="SoloFirst"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://GameWorld.tscn"
 config/icon="res://icon.png"
 
 [display]
 
-window/size/width=1920
-window/size/height=1080
+window/size/width=960
+window/size/height=540
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [gui]
 
