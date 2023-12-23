@@ -1,36 +1,21 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://PlayerTopDown.gd" type="Script" id=1]
-[ext_resource path="res://Pixel Crawler - FREE - 1.8/Heroes/Wizzard/Idle/Idle-Sheet.png" type="Texture" id=2]
+[ext_resource path="res://Art Assets/Character without weapon/idle/idle right1.png" type="Texture" id=2]
+[ext_resource path="res://Art Assets/Character without weapon/walk/walk right1.png" type="Texture" id=3]
+[ext_resource path="res://Art Assets/Character without weapon/walk/walk down1.png" type="Texture" id=4]
+[ext_resource path="res://Art Assets/Character without weapon/walk/walk left1.png" type="Texture" id=5]
+[ext_resource path="res://Art Assets/Character without weapon/walk/walk up1.png" type="Texture" id=6]
+[ext_resource path="res://AnchorDetector2D.tscn" type="PackedScene" id=7]
+[ext_resource path="res://AnchorCamera2D.tscn" type="PackedScene" id=8]
 
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 32, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=3]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 96, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 32, 32 )
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 8.0
+height = 22.0
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -38,8 +23,20 @@ animations = [ {
 
 [node name="PlayerTopDown" type="KinematicBody2D"]
 script = ExtResource( 1 )
+friction = 0.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1, -10 )
+shape = SubResource( 7 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -12 )
+scale = Vector2( 4, 4 )
 frames = SubResource( 6 )
+
+[node name="AnchorCamera2D" parent="." instance=ExtResource( 8 )]
+
+[node name="AnchorDetector2D" parent="." instance=ExtResource( 7 )]
+
+[connection signal="anchor_detached" from="AnchorDetector2D" to="AnchorCamera2D" method="_on_AnchorDetector2D_anchor_detached"]
+[connection signal="anchor_detected" from="AnchorDetector2D" to="AnchorCamera2D" method="_on_AnchorDetector2D_anchor_detected"]

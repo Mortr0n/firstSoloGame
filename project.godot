@@ -8,10 +8,38 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "Anchor2D",
+"language": "GDScript",
+"path": "res://Anchor2D.gd"
+}, {
+"base": "Camera2D",
+"class": "AnchorCamera2D",
+"language": "GDScript",
+"path": "res://AnchorCamera2D.gd"
+}, {
+"base": "Area2D",
+"class": "AnchorDetector2D",
+"language": "GDScript",
+"path": "res://AnchorDetector2D.gd"
+} ]
+_global_script_class_icons={
+"Anchor2D": "",
+"AnchorCamera2D": "",
+"AnchorDetector2D": ""
+}
+
 [application]
 
 config/name="SoloFirst"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
 
 [gui]
 
@@ -43,6 +71,12 @@ right={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="actors"
+2d_physics/layer_2="obstacles"
+2d_physics/layer_3="anchors"
 
 [physics]
 

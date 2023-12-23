@@ -1,13 +1,14 @@
 extends KinematicBody2D
 
-export var speed := 500 #in pixels per second
+export var speed := 300 #in pixels per second
+export var friction = .18
 
-var _sprites := {Vector2.RIGHT: 1, Vector2.LEFT: 2, Vector2.UP: 3, Vector2.DOWN: 4}
+var _sprites := {Vector2.RIGHT: 1, Vector2.LEFT: 3, Vector2.UP: 4, Vector2.DOWN: 2}
 var _velocity := Vector2.ZERO
 
 onready var animated_sprite: AnimatedSprite = $AnimatedSprite 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(_delta) -> void:
 	var direction := Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
@@ -16,6 +17,10 @@ func _physics_process(_delta: float) -> void:
 	if direction.length() > 1:
 		direction = direction.normalized()
 	move_and_slide(speed * direction)
+	
+	var target_velocity = direction * speed
+	_velocity += (target_velocity - _velocity) * friction
+	_velocity = move_and_slide(_velocity)
  
 func _unhandled_input(event):
 	if event.is_action_pressed("right"):
