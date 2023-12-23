@@ -34,3 +34,14 @@ func _unhandled_input(event):
 
 func _update_sprite(direction: Vector2) -> void:
 	animated_sprite.frame = _sprites[direction]
+
+#
+#func _on_ParallaxBackground_child_exiting_tree(node):
+#	scroll_offset.y += 10
+#	scroll_offset.x += 10
+
+
+#func _on_ParallaxLayer_child_exiting_tree(node):
+#	scroll_offset.y += 10
+#	scroll_offset.x += 10
+
